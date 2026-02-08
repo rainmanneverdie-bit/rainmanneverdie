@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALEX WANG - Personal Brand</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts for premium typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="noise-overlay"></div>
+    <!-- Full-screen background images -->
+    <div class="background-container">
+        <div class="bg-slide active" id="bg-home" style="background-image: url('assets/img/user_main.jpg');"></div>
+    </div>
+
+    <!-- Navigation Overlay -->
+    <nav class="masthead">
+        <div class="nav-left">
+            <a href="#about" class="nav-link">WHO</a>
+        </div>
+        <div class="nav-right">
+            <a href="#folio" class="nav-link">FOLIO</a>
+        </div>
+    </nav>
+
+    <!-- Interactive Cursor Follower -->
+    <div class="cursor-follower"></div>
+
+    <!-- Content Sections -->
+    <main id="main-content">
+        <section id="home" class="section active">
+            <div class="hero-text">
+                <h1>GET READY TO <br>LIVE FOREVER</h1>
+            </div>
+        </section>
+
+        <!-- About/Who Overlay (Hidden by default) -->
+        <div id="about-overlay" class="overlay">
+            <div class="overlay-content">
+                <div class="content-box">
+                    <h2 class="section-title">WHO IS NEVERDIE</h2>
+                    <p class="body-text">NEVERDIE</p>
+                    <p class="body-text" style="font-size: 1.1rem; margin-top: 20px;">深耕说唱与电音结合的艺术商业碰撞，在国内知名夜店以团体嘉宾身份演出
+                        100+ 场。现任 AMUSING 艺术托管中心主理人，致力于构建无边界的舞台艺术与标准化商业服务。</p>
+                </div>
+                <div class="content-box">
+                    <h2 class="section-title">GET IN TOUCH</h2>
+                    <p class="contact-link">EMAIL: <a href="mailto:rainmanneverdie@qq.com">RAINMANNEVERDIE@QQ.COM</a>
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-link">INSTAGRAM</a>
+                        <a href="#" class="social-link">WEIBO</a>
+                        <a href="#" class="social-link">DOUYIN</a>
+                    </div>
+                </div>
+            </div>
+            <button class="close-overlay">CLOSE</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="audio-control">
+            <button id="audio-toggle" class="audio-btn">SOUND OFF</button>
+            <audio id="bg-music" loop>
+                <source src="assets/audio/background.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <div class="scroll-indicator">SCROLL TO EXPLORE</div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

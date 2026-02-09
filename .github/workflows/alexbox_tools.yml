@@ -1,0 +1,33 @@
+name: AlexBox Marketplace Tools
+
+on:
+  workflow_dispatch:
+    inputs:
+      tool_name:
+        description: '选择要调用的工具'
+        required: true
+        default: 'daily_report'
+        type: choice
+        options:
+          - 'daily_report'
+          - 'crypto_analysis'
+          - 'debate_court'
+      args:
+        description: '附加参数'
+        required: false
+        type: string
+
+jobs:
+  invoke_tool:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Dispatch Event to Local Agent
+        run: |
+          echo "正在调用工具: ${{ github.event.inputs.tool_name }}"
+          echo "参数: ${{ github.event.inputs.args }}"
+          # 这里可以通过 Webhook 触发本地 n8n 或 iflow
+          # 暂时仅输出 Log，待用户配置 Webhook URL 后可实现远程调用
+          echo "Toolkit Command: iflow run ${{ github.event.inputs.tool_name }} --args '${{ github.event.inputs.args }}'"

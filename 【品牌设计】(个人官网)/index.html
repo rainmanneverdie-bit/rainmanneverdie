@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALEX WANG - Personal Brand</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts for premium typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="noise-overlay"></div>
+    <!-- Full-screen background images -->
+    <div class="background-container">
+        <div class="bg-slide active" id="bg-home" style="background-image: url('assets/img/user_main.jpg');"></div>
+    </div>
+
+    <!-- Navigation Overlay -->
+    <nav class="masthead">
+        <div class="nav-left">
+            <a href="#about" class="nav-link">WHO</a>
+        </div>
+        <div class="nav-center">
+            <a href="#live" class="nav-link live-trigger"
+                style="color: #00ff41; font-family: 'Courier New', Courier, monospace;">[ LIVE ]</a>
+        </div>
+        <!-- Quant/Folio Overlay -->
+        <div id="folio-overlay" class="overlay">
+            <div class="overlay-content">
+                <div class="content-box">
+                    <h2 class="section-title">QUANT RESEARCH</h2>
+                    <div class="strategy-card">
+                        <div class="strategy-tag">TRADING BOT v2.1</div>
+                        <h3>ALPHA-NEUTORAL ARBITRAGE</h3>
+                        <p class="body-text" style="font-size: 1rem; opacity: 0.8; margin-top: 15px;">
+                            基于机器学习的跨交易所资金费率套利系统。通过监控前 20 大流动性池的偏离度，实现低风险、高频次的对冲交易。
+                        </p>
+                        <div class="strategy-stats">
+                            <div class="stat-item">
+                                <span class="label">SHARPE RATIO</span>
+                                <span class="value">3.2</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="label">ANNUALIZED WIN RATE</span>
+                                <span class="value">68%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <h2 class="section-title">SYSTEM ARCHITECTURE</h2>
+                    <ul class="cap-list">
+                        <li>分布式数据清洗队列</li>
+                        <li>毫秒级订单引擎 (Rust)</li>
+                        <li>多角色 Agent 自主决策系统</li>
+                        <li>实时风险暴露动态对冲</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="close-overlay">CLOSE</button>
+        </div>
+
+        <!-- Cyber-Quant Dashboard Overlay -->
+        <div id="live-overlay" class="overlay dashboard-overlay">
+            <div class="dashboard-container">
+                <div class="dashboard-header">
+                    <div class="terminal-status"><span class="blink">●</span> LIVE FEED: BINANCE GLOBAL TERMINAL</div>
+                    <div class="current-time" id="dashboard-clock">00:00:00</div>
+                </div>
+                <div class="data-grid">
+                    <div class="data-card symbol-card" data-symbol="BTCUSDT">
+                        <div class="card-label">BITCOIN / USDT</div>
+                        <div class="card-value price">00000.00</div>
+                        <div class="card-meta"><span class="change">0.00%</span> | 24H VOL: <span
+                                class="vol">0.0K</span></div>
+                    </div>
+                    <div class="data-card symbol-card" data-symbol="ETHUSDT">
+                        <div class="card-label">ETHEREUM / USDT</div>
+                        <div class="card-value price">0000.00</div>
+                        <div class="card-meta"><span class="change">0.00%</span> | 24H VOL: <span
+                                class="vol">0.0K</span></div>
+                    </div>
+                </div>
+                <!-- Mini visualizer placeholder -->
+                <div class="visualizer-area">
+                    <canvas id="live-visualizer"></canvas>
+                </div>
+                <div class="terminal-log">
+                    <div class="log-header">NEVERDIE SYSTEMS | CORE_REASONING_LOG</div>
+                    <div class="log-content" id="live-log">
+                        <div>> Initializing Global Market Intelligence...</div>
+                    </div>
+                </div>
+            </div>
+            <button class="close-overlay">EXIT TERMINAL</button>
+        </div>
+        </main>
+
+        <footer class="footer">
+            <div class="audio-control">
+                <button id="audio-toggle" class="audio-btn">SOUND OFF</button>
+                <audio id="bg-music" loop>
+                    <source src="assets/audio/background.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+            <div class="scroll-indicator">SCROLL TO EXPLORE</div>
+        </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+/Users/neverdie/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+🌅 开启早间华尔街交易员模式...
+🚀 正在抓取情报与技术指标并生成决策分析...
+WARNING  Could not run function web_search(query=..., max_results=5)                
+ERROR    No results found.                                                          
+         Traceback (most recent call last):                                         
+           File                                                                     
+         "/Users/neverdie/Library/Python/3.9/lib/python/site-packages/agno/tools/fun
+         ction.py", line 888, in execute                                            
+             result = self.function.entrypoint(**entrypoint_args, **self.arguments) 
+         # type: ignore                                                             
+           File                                                                     
+         "/Users/neverdie/Library/Python/3.9/lib/python/site-packages/pydantic/_inte
+         rnal/_validate_call.py", line 39, in wrapper_function                      
+             return wrapper(*args, **kwargs)                                        
+           File                                                                     
+         "/Users/neverdie/Library/Python/3.9/lib/python/site-packages/pydantic/_inte
+         rnal/_validate_call.py", line 136, in __call__                             
+             res =                                                                  
+         self.__pydantic_validator__.validate_python(pydantic_core.ArgsKwargs(args, 
+         kwargs))                                                                   
+           File                                                                     
+         "/Users/neverdie/Library/Python/3.9/lib/python/site-packages/agno/tools/web
+         search.py", line 73, in web_search                                         
+             results = ddgs.text(query=search_query, max_results=actual_max_results,
+         backend=self.backend)                                                      
+           File                                                                     
+         "/Users/neverdie/Library/Python/3.9/lib/python/site-packages/ddgs/ddgs.py",
+         line 220, in text                                                          
+             return self._search("text", query, **kwargs)                           
+           File                                                                     
+         "/Users/neverdie/Library/Python/3.9/lib/python/site-packages/ddgs/ddgs.py",
+         line 216, in _search                                                       
+             raise DDGSException(err or "No results found.")                        
+         ddgs.exceptions.DDGSException: No results found.                           
+✅ 报告已生成至: /Users/neverdie/iflow_workspace/【金融汇报】(分析主理人)/今日报告/2026-02-09.md
+✅ 微信推送成功！

@@ -1,0 +1,301 @@
+:root {
+    --text-white: #ffffff;
+    --text-black: #1a1a1a;
+    --bg-overlay: rgba(255, 255, 255, 0.92);
+    --font-heading: 'Outfit', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    font-family: var(--font-body);
+    color: var(--text-white);
+    overflow: hidden;
+    /* Control scrolling via script for cinematic feel */
+}
+
+/* Background System */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.bg-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.bg-slide.active {
+    opacity: 0.8;
+    /* Slightly dimmed for readability */
+}
+
+/* Navigation Masthead */
+.masthead {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    z-index: 100;
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-link {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    transition: opacity 0.3s;
+    position: relative;
+    mix-blend-mode: difference;
+    /* Ensure visibility over background */
+}
+
+/* Analog Film Grain Texture */
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.15;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+@keyframes rainbow {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* 100-Point Spotlight Cursor - Rainbow Edition */
+.cursor-follower {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background-size: 400%;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    animation: rainbow 5s linear infinite;
+    opacity: 0.8;
+}
+
+.cursor-follower.hover {
+    width: 120px;
+    height: 120px;
+    opacity: 1;
+}
+
+body {
+    cursor: none;
+    /* Hide default cursor for standard desktop */
+}
+
+/* Parallax Container */
+.background-container {
+    transform: scale(1.1);
+    /* Allow some room for movement */
+    will-change: transform;
+}
+
+/* Home Section */
+.hero-text {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    /* Reduced from 4rem for the 'smaller' request */
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    /* Spaced out for premium feel */
+    line-height: 1.2;
+    text-transform: uppercase;
+    mix-blend-mode: overlay;
+    /* Subtle interaction with background/cursor */
+}
+
+/* Refined Overlay Grid */
+.overlay-content {
+    width: 90%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 0;
+    /* Direct contact for borders */
+    background: transparent;
+}
+
+.content-box:first-child {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    /* Subtle Poco-style column split */
+}
+
+.work-year {
+    font-size: 0.7rem;
+    color: #999;
+    letter-spacing: 0.1em;
+}
+
+/* Strategy Card Styling */
+.strategy-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+
+.strategy-tag {
+    font-size: 0.65rem;
+    color: #00ff41;
+    letter-spacing: 0.2em;
+    border: 1px solid #00ff41;
+    display: inline-block;
+    padding: 3px 8px;
+    margin-bottom: 20px;
+}
+
+.strategy-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+}
+
+.strategy-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-item .label {
+    font-size: 0.65rem;
+    color: #666;
+    letter-spacing: 0.15em;
+    margin-bottom: 5px;
+}
+
+.stat-item .value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #00ff41;
+}
+
+/* Visualizer Area */
+.visualizer-area {
+    width: 100%;
+    height: 120px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 255, 65, 0.1);
+    position: relative;
+}
+
+#live-visualizer {
+    width: 100%;
+    height: 100%;
+}
+
+.card-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.card-meta {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #00ff41;
+}
+
+.terminal-log {
+    flex-grow: 1;
+    background: #000;
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    color: rgba(0, 255, 65, 0.8);
+    overflow-y: auto;
+}
+
+.log-header {
+    border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.log-content div {
+    margin-bottom: 5px;
+}
+
+.up {
+    color: #00ff41;
+}
+
+.down {
+    color: #ff3b3b;
+}
+
+@media (max-width: 768px) {
+    .data-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-value {
+        font-size: 1.8rem;
+    }
+}

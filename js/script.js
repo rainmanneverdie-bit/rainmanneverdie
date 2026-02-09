@@ -174,10 +174,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let ws;
     const connectWS = () => {
         if (ws) ws.close();
-        ws = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@ticker/ethusdt@ticker');
+        // Correct Binance Combined Stream URL
+        ws = new WebSocket('wss://stream.binance.com:9443/stream?streams=btcusdt@ticker/ethusdt@ticker');
 
         ws.onmessage = (event) => {
-            const data = JSON.parse(event.data);
+            const payload = JSON.parse(event.data);
+            const data = payload.data; // Combined streams wrap data in a 'data' field
             const symbol = data.s;
             const price = parseFloat(data.c).toFixed(2);
             const change = parseFloat(data.P).toFixed(2);
@@ -195,8 +197,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         ws.onopen = () => addLog('WebSocket Tunnel: ESTABLISHED');
-        ws.onerror = () => addLog('WebSocket Error: Retrying...');
-        ws.onclose = () => setTimeout(connectWS, 5000);
+        ws.onerror = (err) => {
+            console.error('WS Error:', err);
+            addLog('WebSocket Error: Retrying...');
+        };
+        ws.onclose = () => {
+            addLog('WebSocket Tunnel: CLOSED. Reconnecting...');
+            setTimeout(connectWS, 5000);
+        };
     };
 
     const addLog = (msg) => {

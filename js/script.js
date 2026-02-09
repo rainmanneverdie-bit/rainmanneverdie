@@ -161,6 +161,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Dashboard Logic (WebSocket & Feed)
+    const liveTrigger = document.querySelector('.live-trigger');
+    const liveOverlay = document.getElementById('live-overlay');
+    const btcPrice = document.querySelector('.symbol-card[data-symbol="BTCUSDT"] .price');
+    const btcMeta = document.querySelector('.symbol-card[data-symbol="BTCUSDT"] .change');
+    const ethPrice = document.querySelector('.symbol-card[data-symbol="ETHUSDT"] .price');
+    const ethMeta = document.querySelector('.symbol-card[data-symbol="ETHUSDT"] .change');
+    const liveLog = document.getElementById('live-log');
+    const liveClock = document.getElementById('dashboard-clock');
+
+    let ws;
+    const connectWS = () => {
+        if (ws) ws.close();
+        ws = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@ticker/ethusdt@ticker');
+
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            const symbol = data.s;
+            const price = parseFloat(data.c).toFixed(2);
+            const change = parseFloat(data.P).toFixed(2);
+            const isUp = parseFloat(change) >= 0;
+
+            if (symbol === 'BTCUSDT') {
+                btcPrice.innerText = price;
+                btcMeta.innerText = `${isUp ? '+' : ''}${change}%`;
+                btcMeta.className = `change ${isUp ? 'up' : 'down'}`;
+            } else if (symbol === 'ETHUSDT') {
+                ethPrice.innerText = price;
+                ethMeta.innerText = `${isUp ? '+' : ''}${change}%`;
+                ethMeta.className = `change ${isUp ? 'up' : 'down'}`;
+            }
+        };
+
+        ws.onopen = () => addLog('WebSocket Tunnel: ESTABLISHED');
+        ws.onerror = () => addLog('WebSocket Error: Retrying...');
+        ws.onclose = () => setTimeout(connectWS, 5000);
+    };
+
+    const addLog = (msg) => {
+        const div = document.createElement('div');
+        div.innerText = `> ${msg}`;
+        liveLog.prepend(div);
+        if (liveLog.children.length > 20) liveLog.lastChild.remove();
+    };
+
+    const updateClock = () => {
+        const now = new Date();
+        liveClock.innerText = now.toTimeString().split(' ')[0];
+    };
+
+    liveTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        openOverlay('#live-overlay');
+        connectWS();
+        setInterval(updateClock, 1000);
+        addLog('Intel Feed: STARTING SESSION');
+    });
+
+    // Close WS on exit
+    const closeDashboard = liveOverlay.querySelector('.close-overlay');
+    closeDashboard.addEventListener('click', () => {
+        if (ws) ws.close();
+        addLog('Intel Feed: SESSION TERMINATED');
+    });
+
     // Initial Hero Scramble
     const heroH1 = document.querySelector('.hero-text h1');
     scrambleText(heroH1, "NEVERDIE\nLIVE FOREVER");

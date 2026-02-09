@@ -24,6 +24,10 @@
         <div class="nav-left">
             <a href="#about" class="nav-link">WHO</a>
         </div>
+        <div class="nav-center">
+            <a href="#live" class="nav-link live-trigger"
+                style="color: #00ff41; font-family: 'Courier New', Courier, monospace;">[ LIVE ]</a>
+        </div>
         <div class="nav-right">
             <a href="#folio" class="nav-link">FOLIO</a>
         </div>
@@ -40,8 +44,9 @@
             </div>
         </section>
 
-        <!-- About/Who Overlay (Hidden by default) -->
+        <!-- About/Who Overlay -->
         <div id="about-overlay" class="overlay">
+            <!-- ... existing about content ... -->
             <div class="overlay-content">
                 <div class="content-box">
                     <h2 class="section-title">WHO IS NEVERDIE</h2>
@@ -61,6 +66,39 @@
                 </div>
             </div>
             <button class="close-overlay">CLOSE</button>
+        </div>
+
+        <!-- Cyber-Quant Dashboard Overlay -->
+        <div id="live-overlay" class="overlay dashboard-overlay">
+            <div class="dashboard-container">
+                <div class="dashboard-header">
+                    <div class="terminal-status"><span class="blink">●</span> LIVE FEED: BINANCE CLOUD</div>
+                    <div class="current-time" id="dashboard-clock">00:00:00</div>
+                </div>
+                <div class="data-grid">
+                    <div class="data-card symbol-card" data-symbol="BTCUSDT">
+                        <div class="card-label">BITCOIN / USDT</div>
+                        <div class="card-value price">00000.00</div>
+                        <div class="card-meta"><span class="change">0.00%</span> | VOL: <span class="vol">0.0K</span>
+                        </div>
+                    </div>
+                    <div class="data-card symbol-card" data-symbol="ETHUSDT">
+                        <div class="card-label">ETHEREUM / USDT</div>
+                        <div class="card-value price">0000.00</div>
+                        <div class="card-meta"><span class="change">0.00%</span> | VOL: <span class="vol">0.0K</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="terminal-log">
+                    <div class="log-header">SYSTEM LOG [NEVERDIE-INTEL]</div>
+                    <div class="log-content" id="live-log">
+                        <div>> Initializing Secure WebSocket Tunnel...</div>
+                        <div>> Connected to Binance Global.</div>
+                        <div>> Syncing Real-time Tickers...</div>
+                    </div>
+                </div>
+            </div>
+            <button class="close-overlay">EXIT TERMINAL</button>
         </div>
     </main>
 
